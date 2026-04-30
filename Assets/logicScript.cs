@@ -16,7 +16,6 @@ public class cardspawner : MonoBehaviour
     public int cols = 4;
     public Vector2[,] cardGrid;
 
-
     void createCard(int x,int y)  
     {
         GameObject cardInstance = Instantiate(Card, new Vector2(x, y), transform.rotation);
@@ -27,8 +26,8 @@ public class cardspawner : MonoBehaviour
     {
         int height = 720;
         int width = 1280;
-        int startX = 100;
-        int startY = 75;
+        int startX = 210;
+        int startY = 150;
         int threegap = 25;
         int horizontalGap = 200;
         int verticalGap = 150;
