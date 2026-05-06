@@ -15,11 +15,53 @@ public class cardspawner : MonoBehaviour
     public int rows = 4;
     public int cols = 4;
     public Vector2[,] cardGrid;
+    public List<string> myList = new List<string>();
+    public Sprite[] cardFaces;
+    public List<int> cardNums = new List<int>();
+    public int cardIndex = 0;
+    public List<List<int>> cardNumList = new List<List<int>>();
 
-    void createCard(int x,int y)  
+    void Shuffle<T>(List<T> inputList)
+    {
+        for (int i = 0; i < inputList.Count; i++)
+        {
+            T temp = inputList[i];
+            int randomIndex = UnityEngine.Random.Range(i, inputList.Count);
+            inputList[i] = inputList[randomIndex];
+            inputList[randomIndex] = temp;
+        }
+    }
+    void createCard(int x,int y, int cardNum)  
     {
         GameObject cardInstance = Instantiate(Card, new Vector2(x, y), transform.rotation);
         cardInstance.transform.SetParent(canvas.transform);
+        Image guiImage = cardInstance.GetComponent<Image>();
+        Debug.Log(cardIndex);
+        Sprite epicSprite = cardFaces[cardNums[cardIndex]];
+
+        guiImage.sprite = epicSprite;
+        cardIndex++;
+        int leftover = cardNum % 3;
+        int group = (cardNum - leftover) / 3;
+        cardspawner cardStuff = cardInstance.GetComponent<cardspawner>();
+        //cardStuff.cardNumList = cardNumList[group];
+        //cardStuff.cardNumList = 0;
+
+        //int cardNum = 0;
+        //if (i == 0)
+        //{
+        //    cardNum = 1;
+        //}
+        //else if (i == 1)
+        //{
+        //    cardNum = 2;
+        //}
+        //else if (i == 2)
+        //{
+        //    cardNum = 0;
+        //}
+        Debug.Log("WE DID IT");
+
     }
     // Start is called sbefore the first frame update
     void Start()
@@ -31,15 +73,36 @@ public class cardspawner : MonoBehaviour
         int threegap = 25;
         int horizontalGap = 200;
         int verticalGap = 150;
+        for (int i = 0; i < 51; i++)
+        {
+            cardNums.Add(i);
+        }
+        Shuffle(cardNums);
+
+        for (int i = 0; i < 17; i++)
+        {
+            cardNumList.Add(new List<int>());
+            List<int> current = cardNumList[i];
+            for (int j = 0; j < 3; j++)
+            {
+                current.Add(i*j + i);
+            }
+        }
+
+
         for (int vertical = 0; vertical < 4; vertical++)
         {
             for (int horizontal = 0; horizontal < 5; horizontal++)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if (!(((vertical == 1 && horizontal==2)) || (((vertical == 2 && horizontal == 2))) || (((vertical == 3 && horizontal == 4) ))))
+                    
+                    if (!(((vertical == 1 && horizontal == 2)) || (((vertical == 2 && horizontal == 2))) || (((vertical == 3 && horizontal == 4)))))
                     {
-                        createCard(startX + i * threegap + horizontal * horizontalGap, height - startY - vertical * verticalGap);
+
+                        createCard(startX + i * threegap + horizontal * horizontalGap,
+                            height - startY - vertical * verticalGap, 
+                            vertical * horizontal + i);
 
                     }
                 }
