@@ -31,19 +31,23 @@ public class cardspawner : MonoBehaviour
             inputList[randomIndex] = temp;
         }
     }
-    void createCard(int x,int y, int cardNum)  
+    void createCard(int x,int y, int cardNum, int group)  
     {
         GameObject cardInstance = Instantiate(Card, new Vector2(x, y), transform.rotation);
         cardInstance.transform.SetParent(canvas.transform);
         Image guiImage = cardInstance.GetComponent<Image>();
-        Debug.Log(cardIndex);
+        //Debug.Log(cardIndex);
         Sprite epicSprite = cardFaces[cardNums[cardIndex]];
 
         guiImage.sprite = epicSprite;
         cardIndex++;
-        int leftover = cardNum % 3;
-        int group = (cardNum - leftover) / 3;
-        cardspawner cardStuff = cardInstance.GetComponent<cardspawner>();
+        cardboy cardStuff = cardInstance.GetComponent<cardboy>();
+        cardStuff.cardNum = cardNum;
+        cardStuff.group = group;
+        Debug.Log($"cardNum: {cardNum}, group: {group}");
+        List<int> currentList = cardNumList[group];
+        currentList.Add(cardNum);
+
         //cardStuff.cardNumList = cardNumList[group];
         //cardStuff.cardNumList = 0;
 
@@ -60,7 +64,7 @@ public class cardspawner : MonoBehaviour
         //{
         //    cardNum = 0;
         //}
-        Debug.Log("WE DID IT");
+        //Debug.Log("WE DID IT");
 
     }
     // Start is called sbefore the first frame update
@@ -89,7 +93,7 @@ public class cardspawner : MonoBehaviour
             }
         }
 
-
+        int skips = 0;
         for (int vertical = 0; vertical < 4; vertical++)
         {
             for (int horizontal = 0; horizontal < 5; horizontal++)
@@ -100,10 +104,19 @@ public class cardspawner : MonoBehaviour
                     if (!(((vertical == 1 && horizontal == 2)) || (((vertical == 2 && horizontal == 2))) || (((vertical == 3 && horizontal == 4)))))
                     {
 
-                        createCard(startX + i * threegap + horizontal * horizontalGap,
-                            height - startY - vertical * verticalGap, 
-                            vertical * horizontal + i);
+                        int group = vertical * 5 + horizontal - skips/3;
+                        //Debug.Log("GROUP: " + group);
 
+                        createCard(startX + i * threegap + horizontal * horizontalGap,
+                            height - startY - vertical * verticalGap,
+                            i,
+                            group);
+
+                    } else
+                    {
+                        skips++;
+
+                        //Debug.Log("SKIP: " + skips);
                     }
                 }
             }

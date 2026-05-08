@@ -370,6 +370,8 @@ MonoBehaviour:
   - {fileID: 3817731865508790606, guid: d15c9c516c88fde40ba6486e351943c3, type: 3}
   - {fileID: 6148705484855627368, guid: 8c69ab33ffd9ba640833f6c20dcba05c, type: 3}
   - {fileID: -329531158476630124, guid: 783b79849d440e5429d87bb9491baecf, type: 3}
+  cardNums: 
+  cardIndex: 0
 --- !u!4 &871892541
 Transform:
   m_ObjectHideFlags: 0
@@ -408,6 +410,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCard: {fileID: 1120989053537627512, guid: 3419e710b07386849a041a099ccb6a4c, type: 3}
+  cardNum: 0
+  group: 0
+  logicScript: {fileID: 0}
 --- !u!1 &1339214890
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +646,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCard: {fileID: 1244401087}
+  cardNum: 0
+  group: 0
+  logicScript: {fileID: 871892539}
+--- !u!114 &1605252476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7285955865174725512, guid: 3419e710b07386849a041a099ccb6a4c, type: 3}
+  m_PrefabInstance: {fileID: 7300759157745192001}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605252469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1605252478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605252469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a1a7427db717744abf91d5287a9e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardsList: []
+  canvas: {fileID: 0}
+  cardsX: 0
+  cardsY: 0
+  Card: {fileID: 0}
+  rows: 4
+  cols: 4
+  myList: []
+  cardFaces: []
+  cardNums: 
+  cardIndex: 0
 --- !u!1001 &1859977668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -840,7 +882,7 @@ PrefabInstance:
     - target: {fileID: 5984661200435562373, guid: 3419e710b07386849a041a099ccb6a4c, type: 3}
       propertyPath: m_TargetGraphic
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1605252476}
     - target: {fileID: 5984661200435562373, guid: 3419e710b07386849a041a099ccb6a4c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -876,6 +918,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1120989053537627512, guid: 3419e710b07386849a041a099ccb6a4c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1605252474}
+    - targetCorrespondingSourceObject: {fileID: 1120989053537627512, guid: 3419e710b07386849a041a099ccb6a4c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1605252478}
   m_SourcePrefab: {fileID: 100100000, guid: 3419e710b07386849a041a099ccb6a4c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
