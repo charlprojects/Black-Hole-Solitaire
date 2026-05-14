@@ -20,6 +20,7 @@ public class cardspawner : MonoBehaviour
     public List<int> cardNums = new List<int>();
     public int cardIndex = 0;
     public List<List<int>> cardNumList = new List<List<int>>();
+    public int targetValue = 1;
 
     void Shuffle<T>(List<T> inputList)
     {
@@ -37,6 +38,7 @@ public class cardspawner : MonoBehaviour
         cardInstance.transform.SetParent(canvas.transform);
         Image guiImage = cardInstance.GetComponent<Image>();
         //Debug.Log(cardIndex);
+        Debug.Log(cardIndex);
         Sprite epicSprite = cardFaces[cardNums[cardIndex]];
 
         guiImage.sprite = epicSprite;
@@ -46,7 +48,7 @@ public class cardspawner : MonoBehaviour
         cardStuff.group = group;
         Debug.Log($"cardNum: {cardNum}, group: {group}");
         List<int> currentList = cardNumList[group];
-        currentList.Add(cardNum);
+        //currentList.Add(cardNum);
 
         //cardStuff.cardNumList = cardNumList[group];
         //cardStuff.cardNumList = 0;

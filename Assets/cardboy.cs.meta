@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: fcfe6bf4ae16349458d9da29e9204ce6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - targetCard: {fileID: 1120989053537627512, guid: 3419e710b07386849a041a099ccb6a4c, type: 3}
+  - logicthing: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
